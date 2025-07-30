@@ -1,48 +1,127 @@
-.container {
-  max-width: 480px;
-  padding: 2rem;
-
-  border-radius: 1rem;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-input {
-  padding: 0.5rem;
-  width: 70%;
-  margin-bottom: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  margin-left: 0.5rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #4f9eff;
-  color: white;
-  cursor: pointer;
-}
-
-.weather-info {
-  margin-top: 1.5rem;
-}
-
-.error {
-  color: red;
-  margin-top: 1rem;
-}
-/* 全屏背景和居中布局 */
+/* 页面背景和字体 */
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: linear-gradient(to right, #dbeafe, #f0f9ff);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(to bottom right, #dbeafe, #e0f2fe);
+  font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;       /* 垂直布局 */
+  align-items: center;          /* 居中 */
+}
 
-  /* 👇 不再用 flex，而是用 padding-top */
-  padding-top: 80px;
-  display: block;
+/* 主容器 */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 60px;              /* 👈 控制整体靠上的距离 */
+  text-align: center;
+}
+
+/* 标题 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #1e3a8a;
+  margin-bottom: 2rem;
+}
+
+/* 搜索框和按钮 */
+input {
+  padding: 0.7rem;
+  width: 60%;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+}
+input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px #bfdbfe;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+button:hover {
+  background-color: #2563eb;
+}
+
+/* 错误信息 */
+.error {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* 当前天气 */
+.weather-now {
+  margin-top: 2rem;
+}
+.weather-now h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.weather-now p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+}
+
+/* 三天天气预报标题 */
+.forecast {
+  margin-top: 2.5rem;
+}
+.forecast-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #1e3a8a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.forecast-title::before {
+  content: "📅";
+}
+
+/* 横向排列卡片 */
+.forecast-grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: nowrap;    /* 👈 不换行 */
+  overflow-x: auto;     /* 👈 超出一行时可滑动 */
+  padding-bottom: 1rem;
+}
+
+/* 单个卡片 */
+.forecast-card {
+  background: #f0f9ff;
+  border-radius: 10px;
+  width: 140px;
+  padding: 1rem;
+  flex: 0 0 auto;        /* 👈 固定宽度 */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+.forecast-card:hover {
+  transform: translateY(-4px);
+}
+.forecast-card img {
+  width: 60px;
+  height: 60px;
+}
+.forecast-card p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
 }
